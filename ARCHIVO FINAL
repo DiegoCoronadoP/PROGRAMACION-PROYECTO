@@ -150,3 +150,4 @@ recomendaciones_laborales = analizar_datos_usuario(campo_laboral, habilidades, c
 print("Recomendaciones laborales:")
 for recomendación in recomendaciones_laborales:
     print(recomendación)
+#añadir mas diccionario y añadir cada dato que el usuario ingreso
