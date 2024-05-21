@@ -1,1 +1,152 @@
-ARCHIVO A USAR ESTE ES EL ARCHIVO FINAL-se añadiran mejoras
+
+# Importar las bibliotecas necesarias
+import re
+
+# Definir una función que tome los datos del usuario como entrada
+def analizar_datos_usuario(campo_laboral, habilidades, cursos, experiencias, género, edad):
+    # Inicializar una lista vacía para almacenar las recomendaciones laborales
+    recomendaciones_laborales = []
+
+    # Definir un diccionario de campos laborales y habilidades correspondientes
+    habilidades_laborales = {
+        "ingeniería de software": ["programación", "desarrollo de software", "pruebas de software"],
+        "ciencia de datos": ["análisis de datos", "aprendizaje automático", "estadísticas"],
+        "marketing": ["redes sociales", "SEO", "creación de contenido"],
+        "diseño": ["diseño gráfico", "diseño UX/UI", "ilustración"],
+        "finanzas": ["contabilidad", "análisis financiero", "banca de inversión"],
+        "recursos humanos": ["reclutamiento", "gestión del talento", "administración de beneficios"],
+        "gestión de operaciones": ["gestión de la cadena de suministro", "logística", "mejora de procesos"],
+        "desarrollo de negocios": ["investigación de mercado", "análisis competitivo", "planificación estratégica"],
+        "gestión de proyectos": ["metodologías ágiles", "planificación de proyectos", "gestión de riesgos"],
+        "servicio al cliente": ["soporte al cliente", "retención de clientes", "resolución de conflictos"],
+        "ventas": ["estrategia de ventas", "gestión de cuentas", "negociación"],
+        "redes": ["arquitectura de redes", "seguridad de redes", "administración de redes"],
+        "administración de bases de datos": ["diseño de bases de datos", "desarrollo de bases de datos", "gestión de bases de datos"],
+        "inteligencia artificial": ["aprendizaje automático", "procesamiento de lenguaje natural", "visión por computadora"],
+        "ciberseguridad": ["análisis de seguridad", "pruebas de penetración", "respuesta a incidentes"],
+        "análisis de datos": ["visualización de datos", "análisis estadístico", "minería de datos"],
+        "marketing digital": ["SEO", "PPC", "marketing en redes sociales"],
+        "ingeniería eléctrica": ["diseño de circuitos", "microcontroladores", "sistemas eléctricos"],
+        "ingeniería mecánica": ["diseño mecánico", "sistemas térmicos", "sistemas mecánicos"],
+        "ingeniería civil": ["análisis estructural", "gestión de la construcción", "ingeniería de transporte"]
+    }
+
+    # Iterar a través de los campos laborales y habilidades correspondientes
+    for campo, lista_habilidades in habilidades_laborales.items():
+        # Verificar si las habilidades del usuario coinciden con las habilidades requeridas para el campo laboral
+        if set(habilidades).intersection(lista_habilidades):
+            # Si hay una coincidencia, agregar el campo laboral a la lista de recomendaciones laborales
+            recomendaciones_laborales.append(campo)
+
+    # Definir un diccionario de títulos laborales y cursos correspondientes
+    cursos_laborales = {
+        "ingeniero de software": ["Introducción a la Ciencia de la Computación", "Estructuras de Datos y Algoritmos", "Ingeniería de Software"],
+        "científico de datos": ["Introducción a la Ciencia de Datos", "Aprendizaje Automático", "Aprendizaje Profundo"],
+        "especialista en marketing": ["Marketing en Redes Sociales", "SEO", "Marketing de Contenido"],
+        "diseñador gráfico": ["Diseño Gráfico", "Diseño UX/UI", "Ilustración"],
+        "analista financiero": ["Contabilidad Financiera", "Gestión Financiera", "Análisis de Inversiones"],
+        "gerente de recursos humanos": ["Gestión de Recursos Humanos", "Comportamiento Organizacional", "Administración de Beneficios"],
+        "gerente de operaciones": ["Gestión de Operaciones", "Gestión de la Cadena de Suministro", "Mejora de Procesos"],
+        "gerente de desarrollo de negocios": ["Desarrollo de Negocios", "Investigación de Mercado", "Análisis Competitivo"],
+        "gerente de proyectos": ["Gestión de Proyectos", "Metodologías Ágiles", "Gestión de Riesgos"],
+        "representante de servicio al cliente": ["Servicio al Cliente", "Soporte al Cliente", "Resolución de Conflictos"],
+        "representante de ventas": ["Estrategia de Ventas", "Gestión de Cuentas", "Negociación"],
+        "administrador de redes": ["Administración de Redes", "Seguridad de Redes", "Arquitectura de Redes"],
+        "administrador de bases de datos": ["Administración de Bases de Datos", "Diseño de Bases de Datos", "Desarrollo de Bases de Datos"],
+        "ingeniero en inteligencia artificial": ["Inteligencia Artificial", "Aprendizaje Automático", "Procesamiento de Lenguaje Natural"],
+        "especialista en ciberseguridad": ["Ciberseguridad", "Análisis de Seguridad", "Pruebas de Penetración"],
+        "analista de datos": ["Análisis de Datos", "Visualización de Datos", "Análisis Estadístico"],
+        "especialista en marketing digital": ["Marketing Digital", "SEO", "PPC"],
+        "ingeniero eléctrico": ["Ingeniería Eléctrica", "Diseño de Circuitos", "Microcontroladores"],
+        "ingeniero mecánico": ["Ingeniería Mecánica", "Diseño Mecánico", "Sistemas Térmicos"],
+        "ingeniero civil": ["Ingeniería Civil", "Análisis Estructural", "Gestión de la Construcción"]
+    }
+
+    # Iterar a través de los títulos laborales y cursos correspondientes
+    for título, lista_cursos in cursos_laborales.items():
+        # Verificar si los cursos del usuario coinciden con los cursos requeridos para el título laboral
+        if set(cursos).intersection(lista_cursos):
+            # Si hay una coincidencia, agregar el título laboral a la lista de recomendaciones laborales
+            recomendaciones_laborales.append(título
+
+)
+
+    # Definir un diccionario de títulos laborales y experiencias correspondientes
+    experiencias_laborales = {
+        "ingeniero de software": ["desarrollo de software", "programación", "pruebas de software"],
+        "científico de datos": ["análisis de datos", "aprendizaje automático", "estadísticas"],
+        "especialista en marketing": ["redes sociales", "SEO", "creación de contenido"],
+        "diseñador gráfico": ["diseño gráfico", "diseño UX/UI", "ilustración"],
+        "analista financiero": ["análisis financiero", "modelado financiero", "análisis de inversiones"],
+        "gerente de recursos humanos": ["reclutamiento", "gestión del talento", "administración de beneficios"],
+        "gerente de operaciones": ["gestión de la cadena de suministro", "logística", "mejora de procesos"],
+        "gerente de desarrollo de negocios": ["investigación de mercado", "análisis competitivo", "planificación estratégica"],
+        "gerente de proyectos": ["gestión de proyectos", "metodologías ágiles", "gestión de riesgos"],
+        "representante de servicio al cliente": ["soporte al cliente", "retención de clientes", "resolución de conflictos"],
+        "representante de ventas": ["estrategia de ventas", "gestión de cuentas", "negociación"],
+        "administrador de redes": ["arquitectura de redes", "seguridad de redes", "administración de redes"],
+        "administrador de bases de datos": ["diseño de bases de datos", "desarrollo de bases de datos", "gestión de bases de datos"],
+        "ingeniero en inteligencia artificial": ["aprendizaje automático", "procesamiento de lenguaje natural", "visión por computadora"],
+        "especialista en ciberseguridad": ["análisis de seguridad", "pruebas de penetración", "respuesta a incidentes"],
+        "analista de datos": ["visualización de datos", "análisis estadístico", "minería de datos"],
+        "especialista en marketing digital": ["SEO", "PPC", "marketing en redes sociales"],
+        "ingeniero eléctrico": ["diseño de circuitos", "microcontroladores", "sistemas eléctricos"],
+        "ingeniero mecánico": ["diseño mecánico", "sistemas térmicos", "sistemas mecánicos"],
+        "ingeniero civil": ["análisis estructural", "gestión de la construcción", "ingeniería de transporte"]
+    }
+
+    # Iterar a través de los títulos laborales y experiencias correspondientes
+    for título, lista_experiencias in experiencias_laborales.items():
+        # Verificar si las experiencias del usuario coinciden con las experiencias requeridas para el título laboral
+        if set(experiencias).intersection(lista_experiencias):
+            # Si hay una coincidencia, agregar el título laboral a la lista de recomendaciones laborales
+            recomendaciones_laborales.append(título)
+
+    # Definir un diccionario de títulos laborales y requisitos correspondientes de género y edad
+    requisitos_laborales = {
+        "ingeniero de software": {"género": "cualquiera", "edad": "18-35"},
+        "científico de datos": {"género": "cualquiera", "edad": "25-40"},
+        "especialista en marketing": {"género": "cualquiera", "edad": "22-30"},
+        "diseñador gráfico": {"género": "cualquiera", "edad": "20-35"},
+        "analista financiero": {"género": "cualquiera", "edad": "25-40"},
+        "gerente de recursos humanos": {"género": "cualquiera", "edad": "30-45"},
+        "gerente de operaciones": {"género": "cualquiera", "edad": "30-45"},
+        "gerente de desarrollo de negocios": {"género": "cualquiera", "edad": "30-45"},
+        "gerente de proyectos": {"género": "cualquiera", "edad": "30-45"},
+        "representante de servicio al cliente": {"género": "cualquiera", "edad": "18-30"},
+        "representante de ventas": {"género": "cualquiera", "edad": "25-40"},
+        "administrador de redes": {"género": "cualquiera", "edad": "25-40"},
+        "administrador de bases de datos": {"género": "cualquiera", "edad": "25-40"},
+        "ingeniero en inteligencia artificial": {"género": "cualquiera", "edad": "25-40"},
+        "especialista en ciberseguridad": {"género": "cualquiera", "edad": "25-40"},
+        "analista de datos": {"género": "cualquiera", "edad": "25-40"},
+        "especialista en marketing digital": {"género": "cualquiera", "edad": "22-30"},
+        "ingeniero eléctrico": {"género": "cualquiera", "edad": "25-40"},
+        "ingeniero mecánico": {"género": "cualquiera", "edad": "25-40"},
+        "ingeniero civil": {"género": "cualquiera", "edad": "25-40"}
+    }
+
+    # Iterar a través de los títulos laborales y requisitos correspondientes
+    for título, requisitos in requisitos_laborales.items():
+        edad_mínima, edad_máxima = map(int, requisitos["edad"].split("-"))
+        if género == requisitos["género"] and edad_mínima <= edad <= edad_máxima:
+            recomendaciones_laborales.append(título)
+
+    # Devolver la lista de recomendaciones laborales
+    return recomendaciones_laborales
+
+# Obtener los datos del usuario
+campo_laboral = input("Ingrese su campo laboral: ")
+habilidades = input("Ingrese sus habilidades (separadas por comas): ").split(",")
+cursos = input("Ingrese los cursos que ha tomado (separados por comas): ").split(",")
+experiencias = input("Ingrese sus experiencias laborales (separadas por comas): ").split(",")
+género = input("Ingrese su género: ")
+edad = int(input("Ingrese su edad: "))
+
+# Analizar los datos del usuario y obtener las recomendaciones laborales
+recomendaciones_laborales = analizar_datos_usuario(campo_laboral, habilidades, cursos, experiencias, género, edad)
+
+# Imprimir las recomendaciones laborales
+print("Recomendaciones laborales:")
+for recomendación in recomendaciones_laborales:
+    print(recomendación)
